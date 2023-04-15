@@ -1,12 +1,13 @@
 .form{
     display: flex;
     flex-direction: column;
+    margin-left: 440px;
+    margin-top: 20px;
 }
 
 .form label{
     margin-bottom: 5px;
     font-weight: bold;
-    font-size: 1.125rem;
     border-radius: 4px;
 }
 
@@ -28,4 +29,5 @@
     border-radius: 5px;
     background-color: #ebb002;
     border: none;
+    cursor: pointer;
 }

@@ -1,0 +1,15 @@
+.todo-item{
+    display: flex;
+    justify-content: space-between;
+    padding: 18px;
+    margin-bottom: 10px;
+    width: 600px;
+    border-radius: 5px;
+    border: none;
+    background-color: #f7f5ef;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.todo-item i {
+    cursor: pointer;
+}
