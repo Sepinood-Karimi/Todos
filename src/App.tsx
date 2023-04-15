@@ -11,10 +11,15 @@ function App() {
     const newTodoItem = new Todo(newTodoText);
     return setTodoItems((prevTodoItems) => prevTodoItems.concat(newTodoItem));
   };
+  const removeTodoItemHandler = (todoId: number) => {
+    return setTodoItems((prevTodoItems) =>
+      prevTodoItems.filter((item) => item.todoId !== todoId)
+    );
+  };
   return (
     <>
       <NewTodoForm onAddTodo={addTodoItemsHandler} />
-      <Todos items={todoItems} />
+      <Todos items={todoItems} onRemoveTodoItem={removeTodoItemHandler} />
     </>
   );
 }
