@@ -1,13 +1,20 @@
-import React from 'react';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
 import Todos from "./Components/Todos/Todos";
-import Todo from "./Components/Models/Todo";
+import Todo from "./Models/Todo";
+import NewTodoForm from "./Components/NewTodo/NewTodoForm";
 
 function App() {
-    const items = [new Todo('React'),new Todo('React')]
+  const [todoItems, setTodoItems] = useState<Todo[]>([]);
+
+  const addTodoItemsHandler = (newTodoText: string) => {
+    const newTodoItem = new Todo(newTodoText);
+    return setTodoItems((prevTodoItems) => prevTodoItems.concat(newTodoItem));
+  };
   return (
     <>
-      <Todos items={items}/>
+      <NewTodoForm onAddTodo={addTodoItemsHandler} />
+      <Todos items={todoItems} />
     </>
   );
 }
