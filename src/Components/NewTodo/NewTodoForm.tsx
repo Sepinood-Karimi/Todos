@@ -8,7 +8,11 @@ const NewTodoForm: React.FC<{ onAddTodo: (newTodoText: string) => void }> = (
   const inputTodoRef = useRef<HTMLInputElement>(null);
   const todoFormSubmitHandler = (event: FormEvent) => {
     event.preventDefault();
-    props.onAddTodo(inputTodoRef.current!.value);
+    const enteredTodo = inputTodoRef.current!.value;
+    if (enteredTodo.trim().length === 0) {
+      return;
+    }
+    props.onAddTodo(enteredTodo);
   };
   return (
     <form onSubmit={todoFormSubmitHandler} className={classnames(classes.form)}>

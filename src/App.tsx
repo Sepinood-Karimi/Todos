@@ -3,6 +3,8 @@ import "./App.css";
 import Todos from "./Components/Todos/Todos";
 import Todo from "./Models/Todo";
 import NewTodoForm from "./Components/NewTodo/NewTodoForm";
+import NewTodoCtx from "./Components/NewTodoCtx/NewTodoCtx";
+import TodosCtx from "./Components/TodosCtx/TodosCtx";
 
 function App() {
   const [todoItems, setTodoItems] = useState<Todo[]>([]);
@@ -20,6 +22,8 @@ function App() {
     <>
       <NewTodoForm onAddTodo={addTodoItemsHandler} />
       <Todos items={todoItems} onRemoveTodoItem={removeTodoItemHandler} />
+      <NewTodoCtx />
+      <TodosCtx />
     </>
   );
 }

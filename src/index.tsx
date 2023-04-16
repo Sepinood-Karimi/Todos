@@ -1,17 +1,18 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
 import "../src/font-awesome/css/font-awesome.css";
+import TodosProvider from "./Store/Todos-Provider";
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById("root") as HTMLElement
 );
 root.render(
-  <React.StrictMode>
+  <TodosProvider>
     <App />
-  </React.StrictMode>
+  </TodosProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
