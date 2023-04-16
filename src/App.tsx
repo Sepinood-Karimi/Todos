@@ -20,8 +20,8 @@ function App() {
   };
   return (
     <>
-      <NewTodoForm onAddTodo={addTodoItemsHandler} />
-      <Todos items={todoItems} onRemoveTodoItem={removeTodoItemHandler} />
+      {/*<NewTodoForm onAddTodo={addTodoItemsHandler} />*/}
+      {/*<Todos items={todoItems} onRemoveTodoItem={removeTodoItemHandler} />*/}
       <NewTodoCtx />
       <TodosCtx />
     </>

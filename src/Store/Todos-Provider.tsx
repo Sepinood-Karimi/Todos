@@ -1,19 +1,25 @@
 import TodosContext from "./Todos-Context";
-import React, { ReactNode, useState } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import Todo from "../Models/Todo";
 import TodoContextObj from "../Models/TodoContextObj";
+import insertTodo from "../Api/insertTodo";
+import getTodos from "../Api/getTodos";
+import todo from "../Models/Todo";
 
 const TodosProvider: React.FC<{ children?: ReactNode }> = (props) => {
   const [todoItems, setTodoItems] = useState<Todo[]>([]);
 
   const addTodoItemsHandler = (newTodoText: string) => {
     const newTodoItem = new Todo(newTodoText);
-    return setTodoItems((prevTodoItems) => prevTodoItems.concat(newTodoItem));
+    insertTodo(newTodoItem);
+    setTodoItems((prevTodoItems) => {
+      return prevTodoItems.concat(newTodoItem);
+    });
   };
   const removeTodoItemHandler = (todoId: number) => {
-    return setTodoItems((prevTodoItems) =>
-      prevTodoItems.filter((item) => item.todoId !== todoId)
-    );
+    setTodoItems((prevTodoItems) => {
+      return prevTodoItems.filter((item) => item.todoId !== todoId);
+    });
   };
 
   const todosContextValue: TodoContextObj = {
@@ -21,6 +27,10 @@ const TodosProvider: React.FC<{ children?: ReactNode }> = (props) => {
     addTodo: addTodoItemsHandler,
     removeTodo: removeTodoItemHandler,
   };
+
+  useEffect(() => {
+    const todos = getTodos().then((todos) => setTodoItems(todos));
+  }, []);
 
   return (
     <TodosContext.Provider value={todosContextValue}>
