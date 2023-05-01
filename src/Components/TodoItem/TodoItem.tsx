@@ -9,11 +9,14 @@ const TodoItem: React.FC<{ todoItem: Todo; onRemoveTodo: () => void }> = (
   return (
     <li className={classnames(classes["todo-item"])}>
       {props.todoItem.todoText}
-      <i
-        className="fa fa-times"
-        aria-hidden="true"
-        onClick={props.onRemoveTodo}
-      ></i>
+      <div>
+        <i
+          className="fa fa-times"
+          aria-hidden="true"
+          onClick={props.onRemoveTodo}
+        ></i>
+        <i className="fa fa-pencil" aria-hidden="true"></i>
+      </div>
     </li>
   );
 };
