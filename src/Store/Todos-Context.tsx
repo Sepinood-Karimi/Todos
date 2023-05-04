@@ -5,8 +5,9 @@ const todoContextDefaultValue = {
   items: [],
   addTodo: () => {},
   removeTodo: () => {},
+  editTodo: () => {},
 };
-// @ts-ignore
+
 const TodosContext = React.createContext<TodoContextObj>(
   todoContextDefaultValue
 );

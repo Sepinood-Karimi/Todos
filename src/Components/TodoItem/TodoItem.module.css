@@ -14,3 +14,15 @@
     cursor: pointer;
     margin-left: 10px;
 }
+
+.edit-form input{
+    background-color: #dae9f8;
+    border: none;
+    border-bottom: 1px solid black;
+    border-radius: 4px 4px 0 0;
+    padding: 2px;
+}
+
+.edit-form i{
+    color: #ebb002;
+}

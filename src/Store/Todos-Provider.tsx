@@ -6,6 +6,7 @@ import insertTodo from "../Api/insertTodo";
 import getTodos from "../Api/getTodos";
 import todo from "../Models/Todo";
 import removeTodo from "../Api/removeTodo";
+import updateTodo from "../Api/updateTodo";
 
 const TodosProvider: React.FC<{ children?: ReactNode }> = (props) => {
   const [todoItems, setTodoItems] = useState<Todo[]>([]);
@@ -24,10 +25,15 @@ const TodosProvider: React.FC<{ children?: ReactNode }> = (props) => {
     });
   };
 
+  const editTodoHandler = (todoId: number, newText: string) => {
+    updateTodo(todoId, newText);
+  };
+
   const todosContextValue: TodoContextObj = {
     items: todoItems,
     addTodo: addTodoItemsHandler,
     removeTodo: removeTodoItemHandler,
+    editTodo: editTodoHandler,
   };
 
   useEffect(() => {
