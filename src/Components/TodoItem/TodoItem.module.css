@@ -26,3 +26,10 @@
 .edit-form i{
     color: #ebb002;
 }
+
+.edit-form button{
+    border: none;
+    padding: 0;
+    width: auto;
+    height: auto;
+}

@@ -2,9 +2,9 @@ class Todo {
   todoText: string;
   todoId: number;
 
-  constructor(text: string) {
+  constructor(text: string, id?: number) {
     this.todoText = text;
-    this.todoId = Math.floor(Math.random() * 10);
+    this.todoId = id || Math.floor(Math.random() * 10);
   }
 }
 export default Todo;

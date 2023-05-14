@@ -2,7 +2,6 @@ import React, { FormEvent, useContext, useRef, useState } from "react";
 import Todo from "../../Models/Todo";
 import classes from "./TodoItem.module.css";
 import classnames from "classnames";
-import updateTodo from "../../Api/updateTodo";
 import todosContext from "../../Store/Todos-Context";
 
 const TodoItem: React.FC<{ todoItem: Todo; onRemoveTodo: () => void }> = (
@@ -13,13 +12,16 @@ const TodoItem: React.FC<{ todoItem: Todo; onRemoveTodo: () => void }> = (
   const editedTextRef = useRef<HTMLInputElement>(null);
 
   const todosCtx = useContext(todosContext);
-  const showEditHandler = (id: number) => {
+
+  const showEditHandler = () => {
     setShowEdit(true);
-    return id;
   };
+
   const editHandler = (event: FormEvent) => {
     event.preventDefault();
-    const editedText: string = editedTextRef.current!.value;
+    const newText = editedTextRef.current!.value;
+    todosCtx.editTodo(props.todoItem.todoId, newText);
+    setShowEdit(false);
   };
   return (
     <li className={classnames(classes["todo-item"])}>
@@ -34,7 +36,7 @@ const TodoItem: React.FC<{ todoItem: Todo; onRemoveTodo: () => void }> = (
           <i
             className={classnames("fa fa-pencil")}
             aria-hidden="true"
-            onClick={showEditHandler.bind(null, props.todoItem.todoId)}
+            onClick={showEditHandler}
           ></i>
         </div>
       )}
