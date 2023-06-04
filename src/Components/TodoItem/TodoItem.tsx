@@ -46,7 +46,7 @@ const TodoItem: React.FC<{ todoItem: Todo; onRemoveTodo: () => void }> = (
             className={classnames(classes["edit-form"])}
             onSubmit={editHandler}
           >
-            <input ref={editedTextRef} />
+            <input ref={editedTextRef} defaultValue={props.todoItem.todoText} />
             <button>
               <i className="fa fa-check-square-o" aria-hidden="true"></i>
             </button>
